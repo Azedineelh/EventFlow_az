@@ -67,8 +67,3 @@ def test_client_cant_see_promos():
     assert r.status_code == 403
 
 
-def test_dirty():
-    try:
-        assert 1==2
-    except:
-        pass
