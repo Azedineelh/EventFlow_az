@@ -55,8 +55,10 @@ class Buyer(HttpUser):
 
     def on_start(self):
         email = f"load-{uuid.uuid4().hex[:10]}@example.com"
-        self.client.post("/api/auth/register", json={"email": email, "password": "Passw0rd!"}, name="/api/auth/register")
-        r = self.client.post("/api/auth/token", data={"username": email, "password": "Passw0rd!"}, name="/api/auth/token")
+        self.client.post("/api/auth/register", 
+                         json={"email": email, "password": "Passw0rd!"}, name="/api/auth/register")
+        r = self.client.post("/api/auth/token", 
+                             data={"username": email, "password": "Passw0rd!"}, name="/api/auth/token")
         self.client.headers["Authorization"] = f"Bearer {r.json()['access_token']}"
 
     @task(3)

@@ -50,9 +50,9 @@ def test_disable_promo():
         )
         id = r.json()["id"]
         r2 = requests.post(URL + "/api/admin/promo/" + str(id) + "/disable", headers=h)
-        assert r2.json()["expires_at"] != None
+        assert r2.json()["expires_at"] is not None
     except:
-        pass
+        raise
 
 
 def test_client_cant_see_promos():
